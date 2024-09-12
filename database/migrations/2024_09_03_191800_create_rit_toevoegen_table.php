@@ -18,7 +18,7 @@ return new class extends Migration
             $table->time('tijd_tot'); 
             $table->string('locatie_van');
             $table->string('locatie_tot');
-            $table->integer('afstand');
+            $table->integer('afstand');        
             $table->foreignId('voertuig_id')
                   ->constrained('voertuigen'); 
             $table->timestamps();

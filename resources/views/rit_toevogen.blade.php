@@ -38,7 +38,13 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="block text-blue-900 font-bold bg-gray-200 hover:bg-gray-300 hover:translate-x-1 transform transition px-3 py-2 rounded-md">
+                    <a href="/rit_overzicht" class="block text-blue-900 font-bold bg-gray-200 hover:bg-gray-300 hover:translate-x-1 transform transition px-3 py-2 rounded-md">
+                        <span class="mr-1">&#128204;</span> <!-- Unicode-icoon voor 'Rit-Toevogen' -->
+                        Rit-Overzicht
+                    </a>
+                </li>
+                <li>
+                    <a href="/info" class="block text-blue-900 font-bold bg-gray-200 hover:bg-gray-300 hover:translate-x-1 transform transition px-3 py-2 rounded-md">
                         <span class="mr-2">&#8505;</span>
                         Info
                     </a>
@@ -62,48 +68,69 @@
                             <!-- Auto Selectie -->
                             <div>
                                 <label for="auto" class="block text-sm font-medium text-gray-700">Kies een auto</label>
-                                <select id="auto" name="voertuig_id" class="mt-1 block w-full max-w-xs border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 py-1" required>
+                                <select id="auto" name="voertuig_id" class="mt-1 block w-full max-w-xs border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 py-1">
                                     <option value="" disabled selected>Selecteer een auto</option>
                                     @foreach ($voertuigen as $voertuig)
-                                        <option value="{{ $voertuig->id }}" class="option-space">{{ $voertuig->kenteken }}&nbsp;/&nbsp;{{ $voertuig->merk }}</option>
+                                        <option value="{{ $voertuig->id }}">{{ $voertuig->kenteken }}&nbsp;/&nbsp;{{ $voertuig->merk }}</option>
                                     @endforeach
                                 </select>
+                                @error('voertuig_id')
+                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                @enderror
                             </div>
                     
                             <!-- Datum -->
                             <div>
                                 <label for="datum" class="block text-sm font-medium text-gray-700">Datum</label>
-                                <input type="date" id="datum" name="datum" class="mt-1 block w-full max-w-xs border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 py-1" required>
+                                <input type="date" id="datum" name="datum" class="mt-1 block w-full max-w-xs border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 py-1">
+                                @error('datum')
+                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                @enderror
                             </div>
                     
                             <!-- Tijd van -->
                             <div>
                                 <label for="tijd_van" class="block text-sm font-medium text-gray-700">Tijd van</label>
-                                <input type="time" id="tijd_van" name="tijd_van" class="mt-1 block w-full max-w-xs border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 py-1" required>
+                                <input type="time" id="tijd_van" name="tijd_van" class="mt-1 block w-full max-w-xs border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 py-1">
+                                @error('tijd_van')
+                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                @enderror
                             </div>
                     
                             <!-- Tijd tot -->
                             <div>
                                 <label for="tijd_tot" class="block text-sm font-medium text-gray-700">Tijd tot</label>
-                                <input type="time" id="tijd_tot" name="tijd_tot" class="mt-1 block w-full max-w-xs border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 py-1" required>
+                                <input type="time" id="tijd_tot" name="tijd_tot" class="mt-1 block w-full max-w-xs border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 py-1">
+                                @error('tijd_tot')
+                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                @enderror
                             </div>
                     
                             <!-- Locatie van -->
                             <div>
                                 <label for="locatie_van" class="block text-sm font-medium text-gray-700">Locatie van</label>
-                                <input type="text" id="locatie_van" name="locatie_van" class="mt-1 block w-full max-w-xs border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 py-1" placeholder="Vul de vertrek locatie in" required>
+                                <input type="text" id="locatie_van" name="locatie_van" class="mt-1 block w-full max-w-xs border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 py-1" placeholder="Vul de vertrek locatie in">
+                                @error('locatie_van')
+                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                @enderror
                             </div>
                     
                             <!-- Locatie tot -->
                             <div>
                                 <label for="locatie_tot" class="block text-sm font-medium text-gray-700">Locatie tot</label>
-                                <input type="text" id="locatie_tot" name="locatie_tot" class="mt-1 block w-full max-w-xs border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 py-1" placeholder="Vul de bestemming in" required>
+                                <input type="text" id="locatie_tot" name="locatie_tot" class="mt-1 block w-full max-w-xs border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 py-1" placeholder="Vul de bestemming in">
+                                @error('locatie_tot')
+                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                @enderror
                             </div>
                     
                             <!-- Afstand -->
                             <div>
                                 <label for="afstand" class="block text-sm font-medium text-gray-700">Afstand (in km)</label>
-                                <input type="number" id="afstand" name="afstand" class="mt-1 block w-full max-w-xs border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 py-1" placeholder="Vul de afstand in" required>
+                                <input type="number" id="afstand" name="afstand" class="mt-1 block w-full max-w-xs border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 py-1" placeholder="Vul de afstand in">
+                                @error('afstand')
+                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                @enderror
                             </div>
                     
                             <!-- Submit Button -->
